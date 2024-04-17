@@ -4,17 +4,24 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home</title>
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/genres.css" />
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Highest Rated</a></li>
-                <li><a href="#">Most Popular</a></li>
-            </ul>
-        </nav>
+        <header>
+            <h2>The Movie Database</h2>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Highest Rated</a></li>
+                    <li><a href="#">Most Popular</a></li>
+                </ul>
+                <form><input type="text" placeholder="search" /></form>
+            </nav>
+        </header>
+
         <main>
-            <h1>Welcome to The Movie Database!</h1>
+            <h1>Welcome to TMD!</h1>
 
             <h3>Select preferred genre</h3>
             <ul class="genres"></ul>
