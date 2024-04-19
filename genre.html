@@ -6,6 +6,7 @@
         <title>Home</title>
         <link rel="stylesheet" href="styles/style.css" />
         <link rel="stylesheet" href="styles/movies.css" />
+        <link rel="stylesheet" href="styles/pagination.css" />
     </head>
     <body>
         <header>
@@ -13,8 +14,8 @@
             <nav id="nav">
                 <ul>
                     <li><a href="/" class="active">Home</a></li>
-                    <li><a href="#">Highest Rated</a></li>
-                    <li><a href="#">Most Popular</a></li>
+                    <li><a href="/highest_rated">Highest Rated</a></li>
+                    <li><a href="/most_popular">Most Popular</a></li>
                 </ul>
                 <form id="search">
                     <select
@@ -35,7 +36,14 @@
         <main>
             <h2 class="genre-title center">Loading...</h2>
             <ul class="movies"></ul>
+            <ul class="page">
+                <li class="prev"></li>
+                <li class="current">1 / X</li>
+                <li class="next"></li>
+              </ul>
+            </div>
         </main>
         <script type="module" src="./scripts/genre.js"></script>
+        <script type="module" src="./scripts/reusable/search.js"></script>
     </body>
 </html>

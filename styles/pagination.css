@@ -1,0 +1,34 @@
+.page {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 1rem;
+}
+
+.page .prev,
+.page .next {
+    background-color: rgb(114, 114, 114);
+    height: 30px;
+    width: 30px;
+}
+
+.page .clickable {
+    background-color: black;
+    fill: black;
+}
+
+.page .clickable:hover {
+    cursor: pointer;
+    background-color: rgb(34, 178, 245);
+    fill: rgb(34, 178, 245);
+}
+
+.page .prev {
+    -webkit-mask: url("../icons/chevron-left-solid.svg") no-repeat center;
+    mask: url("../icons/chevron-left-solid.svg") no-repeat center;
+}
+
+.page .next {
+    -webkit-mask: url("./icons/chevron-right-solid.svg") no-repeat center;
+    mask: url("../icons/chevron-right-solid.svg") no-repeat center;
+}

@@ -1,4 +1,4 @@
-import { getGenres } from "./movieAPI.js";
+import { getGenres } from "./reusable/movieAPI.js";
 const genresEl = document.querySelector(".genres");
 const loadGenres = async () => {
     const genres = await getGenres();
