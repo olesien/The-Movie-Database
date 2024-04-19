@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home</title>
         <link rel="stylesheet" href="styles/style.css" />
-        <link rel="stylesheet" href="styles/genres.css" />
+        <link rel="stylesheet" href="styles/movies.css" />
     </head>
     <body>
         <header>
             <h2>The Movie Database</h2>
             <nav id="nav">
                 <ul>
-                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="/" class="active">Home</a></li>
                     <li><a href="#">Highest Rated</a></li>
                     <li><a href="#">Most Popular</a></li>
                 </ul>
@@ -33,11 +33,9 @@
         </header>
 
         <main>
-            <h1>Welcome to TMD!</h1>
-
-            <h3>Select preferred genre</h3>
-            <ul class="genres"></ul>
+            <h2 class="genre-title center">Loading...</h2>
+            <ul class="movies"></ul>
         </main>
-        <script type="module" src="./scripts/genres.js"></script>
+        <script type="module" src="./scripts/genre.js"></script>
     </body>
 </html>

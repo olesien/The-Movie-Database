@@ -7,7 +7,7 @@ const loadGenres = async () => {
         const li = document.createElement("li");
 
         const a = document.createElement("a");
-        a.href = "/genre/" + genre.id;
+        a.href = "/genre.html?id=" + genre.id + "&name=" + genre.name;
         a.innerText = genre.name;
 
         li.appendChild(a);

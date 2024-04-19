@@ -1,4 +1,9 @@
+@font-face {
+    font-family: inter-regular;
+    src: url("../fonts/inter/static/Inter-Regular.ttf");
+}
 * {
+    font-family: inter-regular;
     margin: 0;
     padding: 0;
 }
@@ -44,7 +49,15 @@ a.active {
     color: rgb(157, 222, 252);
 }
 
-input[type="text"] {
+#search input[type="text"] {
+    padding: 0.5rem 1rem;
+}
+
+#search .search_type {
+    padding: 0.5rem 1rem;
+}
+
+#search .submit_search {
     padding: 0.5rem 1rem;
 }
 
@@ -56,7 +69,11 @@ main {
     border-radius: 5px;
 }
 
-@media (max-width: 900px) {
+.center {
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
     main {
         width: 90%;
     }
@@ -66,7 +83,7 @@ main {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #nav {
         flex-direction: column;
         justify-content: center;

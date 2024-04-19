@@ -1,0 +1,27 @@
+.movies {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.movies > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.movies img {
+    width: 100px;
+    height: auto;
+}
+
+.movies a {
+    color: black;
+}
+
+.movies a:hover {
+    cursor: pointer;
+    color: blue;
+}
