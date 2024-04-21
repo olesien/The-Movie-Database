@@ -4,9 +4,10 @@ export const renderList = (list, element) => {
     list.forEach((data) => {
         const movieDiv = document.createElement("li");
         const imgEl = document.createElement("img");
-        imgEl.src =
-            "https://media.themoviedb.org/t/p/w300_and_h450_bestv2" +
-            data.profile_path;
+        imgEl.src = data?.profile_path
+            ? "https://media.themoviedb.org/t/p/w300_and_h450_bestv2" +
+              data.profile_path
+            : "/images/unknown_person.jpg";
 
         const titleEl = document.createElement("h2");
         const linkEl = document.createElement("a");
