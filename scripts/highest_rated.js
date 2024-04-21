@@ -1,4 +1,4 @@
-import { renderList } from "./reusable/moveList.js";
+import { renderList } from "./reusable/movieList.js";
 import { getHighestRatedMovies } from "./reusable/movieAPI.js";
 import { renderPagination } from "./reusable/pagination.js";
 const prevEl = document.querySelector(".prev");

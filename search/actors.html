@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Movie Search</title>
+        <title>Actor Search</title>
         <link rel="stylesheet" href="../styles/style.css" />
         <link rel="stylesheet" href="../styles/movies.css" />
         <link rel="stylesheet" href="../styles/pagination.css" />
@@ -24,8 +24,8 @@
                         title="Select type"
                         class="search_type"
                     >
-                        <option value="movies" selected>Movies</option>
-                        <option value="actors">Actors</option>
+                        <option value="movies">Movies</option>
+                        <option value="actors" selected>Actors</option>
                     </select>
                     <input type="text" placeholder="search" class="search_field" />
                     <input type="submit" value="Search" class="submit_search" />
@@ -34,7 +34,7 @@
         </header>
 
         <main>
-            <h2 class="center title">Movie Search</h2>
+            <h2 class="center title">Actor Search</h2>
             <ul class="movies"></ul>
             <ul class="page">
                 <li class="prev"></li>
@@ -43,7 +43,7 @@
               </ul>
             </div>
         </main>
-        <script type="module" src="../scripts/movie_search.js"></script>
+        <script type="module" src="../scripts/actor_search.js"></script>
         <script type="module" src="../scripts/reusable/search.js"></script>
     </body>
 </html>

@@ -109,3 +109,25 @@ export const getMovieSearch = async (searchText, page) => {
         return [];
     }
 };
+
+export const getActorSearch = async (searchText, page) => {
+    //Return all actors that match
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/search/person?query=${searchText}&language=en-US&page=${page}`,
+            {
+                cache: "force-cache",
+                headers: {
+                    accept: "application/json",
+                    Authorization: `Bearer ${authKey}`,
+                },
+            }
+        );
+        const json = await res.json();
+        console.log(json);
+        return json;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+};

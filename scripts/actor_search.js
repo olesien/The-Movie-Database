@@ -1,17 +1,25 @@
-import { renderList } from "./reusable/movieList.js";
-import { getPopularMovies } from "./reusable/movieAPI.js";
+import { renderList } from "./reusable/actorList.js";
+import { getActorSearch } from "./reusable/movieAPI.js";
 import { renderPagination } from "./reusable/pagination.js";
+const search = document.querySelector(".search_field");
+
 const prevEl = document.querySelector(".prev");
 const nextEl = document.querySelector(".next");
 const moviesEl = document.querySelector(".movies");
 
 const pagination = document.querySelector(".page");
+const titleEl = document.querySelector(".title");
 
 const urlParams = new URLSearchParams(window.location.search);
 
 let page = urlParams.get("page") ?? 1;
-const loadMovies = async () => {
-    const data = await getPopularMovies(Number(page));
+
+let searchText = urlParams.get("text") ?? "";
+search.value = searchText;
+
+titleEl.innerText = "Search Results - " + searchText;
+const loadActors = async () => {
+    const data = await getActorSearch(searchText, Number(page));
     const movies = data.results;
     renderList(movies, moviesEl);
     console.log(data);
@@ -26,7 +34,7 @@ prevEl.addEventListener("click", () => {
         prevEl.classList.remove("clickable");
         if (page > 1) page--;
         urlParams.set("page", page);
-        loadMovies();
+        loadActors();
         scroll(0, 0); //go to top
     }
 });
@@ -37,9 +45,9 @@ nextEl.addEventListener("click", () => {
         page++;
         nextEl.classList.remove("clickable");
         urlParams.set("page", page);
-        loadMovies();
+        loadActors();
         scroll(0, 0); //go to top
     }
 });
 
-loadMovies();
+loadActors();

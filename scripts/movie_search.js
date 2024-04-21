@@ -1,4 +1,4 @@
-import { renderList } from "./reusable/moveList.js";
+import { renderList } from "./reusable/movieList.js";
 import { getMovieSearch } from "./reusable/movieAPI.js";
 import { renderPagination } from "./reusable/pagination.js";
 const search = document.querySelector(".search_field");
