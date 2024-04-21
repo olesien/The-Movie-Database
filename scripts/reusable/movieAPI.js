@@ -67,10 +67,32 @@ export const getHighestRatedMovies = async (page) => {
 };
 
 export const getPopularMovies = async (page) => {
-    //Return all movies that are high rated
+    //Return all movies that are popular
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+            {
+                cache: "force-cache",
+                headers: {
+                    accept: "application/json",
+                    Authorization: `Bearer ${authKey}`,
+                },
+            }
+        );
+        const json = await res.json();
+        console.log(json);
+        return json;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+};
+
+export const getMovieSearch = async (searchText, page) => {
+    //Return all movies that match
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=${page}`,
             {
                 cache: "force-cache",
                 headers: {

@@ -51,14 +51,29 @@ a.active {
 
 #search input[type="text"] {
     padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 #search .search_type {
     padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 #search .submit_search {
     padding: 0.5rem 1rem;
+    color: white;
+    background-color: rgb(129, 168, 247);
+    border: none;
+    border-radius: 5px;
+}
+
+#search .searchable {
+    background-color: rgb(23, 100, 255);
+}
+
+#search .searchable:hover {
+    background-color: rgb(1, 61, 180);
+    cursor: pointer;
 }
 
 main {
