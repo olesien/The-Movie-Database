@@ -12,15 +12,15 @@ export const renderList = (list, element) => {
         const titleEl = document.createElement("h2");
         const linkEl = document.createElement("a");
         linkEl.innerText = data.original_name;
-        linkEl.href = "/actor/" + data.id;
+        linkEl.href = "/actor.html?id=" + data.id;
         titleEl.appendChild(linkEl);
 
-        const totalMovies = document.createElement("p");
-        totalMovies.innerText = data.known_for.length;
+        const department = document.createElement("p");
+        department.innerText = data.known_for_department;
 
         movieDiv.appendChild(imgEl);
         movieDiv.appendChild(titleEl);
-        movieDiv.appendChild(totalMovies);
+        movieDiv.appendChild(department);
 
         element.appendChild(movieDiv);
     });

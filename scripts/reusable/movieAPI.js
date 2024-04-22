@@ -42,6 +42,40 @@ export const getMoviesByGenre = async (page, id) => {
     }
 };
 
+export const getMovie = async (id) => {
+    //Return movie
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}`,
+            options
+        );
+        const json = await res.json();
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
+    } catch (err) {
+        return { error: true, message: err?.message };
+    }
+};
+
+export const getMovieCredits = async (id) => {
+    //Return movie
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}/credits`,
+            options
+        );
+        const json = await res.json();
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
+    } catch (err) {
+        return { error: true, message: err?.message };
+    }
+};
+
 export const getHighestRatedMovies = async (page) => {
     //Return all movies that are high rated
     try {

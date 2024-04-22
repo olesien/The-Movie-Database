@@ -12,11 +12,12 @@ export const renderList = (list, element) => {
         const titleEl = document.createElement("h2");
         const linkEl = document.createElement("a");
         linkEl.innerText = data.original_title;
-        linkEl.href = "/movie/" + data.id;
+        linkEl.href = "/movie.html?id=" + data.id;
         titleEl.appendChild(linkEl);
 
         const releaseEl = document.createElement("p");
-        releaseEl.innerText = data.release_date;
+        releaseEl.innerText =
+            data?.release_date != "" ? data.release_date : "Unknown";
 
         movieDiv.appendChild(imgEl);
         movieDiv.appendChild(titleEl);

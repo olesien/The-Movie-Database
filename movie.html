@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie</title>
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/movie.css" />
+    </head>
+    <body>
+        <header>
+            <h2>The Movie Database</h2>
+            <nav id="nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/highest_rated.html">Highest Rated</a></li>
+                    <li><a href="/most_popular.html">Most Popular</a></li>
+                </ul>
+                <form id="search">
+                    <select
+                        name="type"
+                        id="type"
+                        title="Select type"
+                        class="search_type"
+                    >
+                        <option value="movies" selected>Movies</option>
+                        <option value="authors">Authors</option>
+                    </select>
+                    <input
+                        type="text"
+                        placeholder="search"
+                        class="search_field"
+                    />
+                    <input type="submit" value="Search" class="submit_search" />
+                </form>
+            </nav>
+        </header>
+        <section><h2 class="error center p-1"></h2></section>
+
+        <main>
+            <div class="movie">
+                <div class="left">
+                    <h1 class="movie_title">Loading...</h1>
+                    <img alt="Movie image" class="movie_img" />
+                    <p class="movie_description"></p>
+                </div>
+                <div class="right">
+                    <h2>Details</h2>
+                    <ul>
+                        <li>
+                            <h4>Release</h4>
+                            <p class="release">Loading...</p>
+                        </li>
+                        <li>
+                            <h4>Popularity</h4>
+                            <p class="popularity">Loading...</p>
+                        </li>
+                        <li>
+                            <h4>Rating</h4>
+                            <p class="rating">Loading...</p>
+                        </li>
+                        <li>
+                            <h4>Revenue</h4>
+                            <p class="revenue">Loading...</p>
+                        </li>
+                        <li>
+                            <h4>Genres</h4>
+                            <p class="genres">Loading...</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>Actors</h2>
+                    <ul class="actor-list"></ul>
+                </div>
+            </div>
+        </main>
+        <script type="module" src="./scripts/movie.js"></script>
+        <script type="module" src="./scripts/reusable/search.js"></script>
+    </body>
+</html>

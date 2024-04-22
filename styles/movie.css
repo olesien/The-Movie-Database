@@ -1,0 +1,39 @@
+.movie {
+    display: flex;
+}
+
+.movie > div {
+    flex: 1;
+    padding: 1rem;
+}
+
+.movie .left {
+    text-align: center;
+}
+
+.movie .movie_title {
+    padding-bottom: 1rem;
+}
+
+.movie .movie_description {
+    padding: 1rem;
+}
+
+.movie img {
+    width: 200px;
+    height: auto;
+}
+
+.movie ul {
+    list-style: none;
+}
+
+.movie ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.movie ul li > * {
+    padding: 0.5rem;
+}
