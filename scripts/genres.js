@@ -1,20 +1,27 @@
 import { getGenres } from "./reusable/movieAPI.js";
 const genresEl = document.querySelector(".genres");
+const errorEl = document.querySelector(".error");
 const loadGenres = async () => {
-    const genres = await getGenres();
-    genresEl.innerHTML = ""; //Clear DOM
-    genres.forEach((genre) => {
-        const li = document.createElement("li");
+    const res = await getGenres();
+    if (res.error == false) {
+        const genres = res.data;
 
-        const a = document.createElement("a");
-        a.href = "/genre.html?id=" + genre.id + "&name=" + genre.name;
-        a.innerText = genre.name;
+        genresEl.innerHTML = ""; //Clear DOM
+        genres.forEach((genre) => {
+            const li = document.createElement("li");
 
-        li.appendChild(a);
+            const a = document.createElement("a");
+            a.href = "/genre.html?id=" + genre.id + "&name=" + genre.name;
+            a.innerText = genre.name;
 
-        genresEl.appendChild(li);
-    });
-    console.log(genres);
+            li.appendChild(a);
+
+            genresEl.appendChild(li);
+        });
+    } else {
+        document.querySelector("main").remove();
+        errorEl.innerText = res.message;
+    }
 };
 
 loadGenres();

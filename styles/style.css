@@ -88,6 +88,14 @@ main {
     text-align: center;
 }
 
+.error {
+    color: red;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
 @media (max-width: 1000px) {
     main {
         width: 90%;

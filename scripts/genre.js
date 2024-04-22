@@ -5,24 +5,31 @@ const prevEl = document.querySelector(".prev");
 const nextEl = document.querySelector(".next");
 const moviesEl = document.querySelector(".movies");
 const genreTitleEl = document.querySelector(".genre-title");
-
 const pagination = document.querySelector(".page");
+const errorEl = document.querySelector(".error");
 
 const urlParams = new URLSearchParams(window.location.search);
 genreTitleEl.innerText = "Genre - " + urlParams.get("name") ?? "";
 
 let page = urlParams.get("page") ?? 1;
 const loadMovies = async () => {
-    const data = await getMoviesByGenre(
+    const res = await getMoviesByGenre(
         Number(page),
         Number(urlParams.get("id") ?? 1)
     );
-    const movies = data.results;
-    renderList(movies, moviesEl);
-    console.log(data);
-    page = data.page;
 
-    renderPagination(pagination, page, data.total_pages);
+    if (res.error == false) {
+        const data = res.data;
+        const movies = data.results;
+        renderList(movies, moviesEl);
+        console.log(data);
+        page = data.page;
+
+        renderPagination(pagination, page, data.total_pages);
+    } else {
+        document.querySelector("main").remove();
+        errorEl.innerText = res.message;
+    }
 };
 
 prevEl.addEventListener("click", () => {

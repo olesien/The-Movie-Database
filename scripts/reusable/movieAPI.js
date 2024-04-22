@@ -1,24 +1,27 @@
 const authKey =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYmI1ZjllMzkxYTk4MGY0NmI0ZTZhMWJjNDYxMjUxNyIsInN1YiI6IjYyZmJjN2MyNmU5MzhhMDA3YTNjMTYxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.18qu5fJ5POzrxMgqTaXyHUeOOlEU_ORX9B1UNN74VNM";
+
+const options = {
+    cache: "force-cache",
+    headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${authKey}`,
+    },
+};
 export const getGenres = async () => {
     //Return all genres
     try {
         const res = await fetch(
             "https://api.themoviedb.org/3/genre/movie/list?language=en",
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json?.genres ?? [];
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json?.genres ?? [] };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };
 
@@ -27,20 +30,15 @@ export const getMoviesByGenre = async (page, id) => {
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&with_genres=${id}&sort_by=popularity.desc`,
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json;
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };
 
@@ -49,20 +47,15 @@ export const getHighestRatedMovies = async (page) => {
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json;
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };
 
@@ -71,20 +64,15 @@ export const getPopularMovies = async (page) => {
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json;
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };
 
@@ -93,20 +81,15 @@ export const getMovieSearch = async (searchText, page) => {
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=en-US&page=${page}`,
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json;
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };
 
@@ -115,19 +98,14 @@ export const getActorSearch = async (searchText, page) => {
     try {
         const res = await fetch(
             `https://api.themoviedb.org/3/search/person?query=${searchText}&language=en-US&page=${page}`,
-            {
-                cache: "force-cache",
-                headers: {
-                    accept: "application/json",
-                    Authorization: `Bearer ${authKey}`,
-                },
-            }
+            options
         );
         const json = await res.json();
-        console.log(json);
-        return json;
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
     } catch (err) {
-        console.log(err);
-        return [];
+        return { error: true, message: err?.message };
     }
 };

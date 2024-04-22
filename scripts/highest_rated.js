@@ -4,20 +4,26 @@ import { renderPagination } from "./reusable/pagination.js";
 const prevEl = document.querySelector(".prev");
 const nextEl = document.querySelector(".next");
 const moviesEl = document.querySelector(".movies");
-
 const pagination = document.querySelector(".page");
+const errorEl = document.querySelector(".error");
 
 const urlParams = new URLSearchParams(window.location.search);
 
 let page = urlParams.get("page") ?? 1;
 const loadMovies = async () => {
-    const data = await getHighestRatedMovies(Number(page));
-    const movies = data.results;
-    renderList(movies, moviesEl);
-    console.log(data);
-    page = data.page;
+    const res = await getHighestRatedMovies(Number(page));
+    if (res.error == false) {
+        const data = res.data;
+        const movies = data.results;
+        renderList(movies, moviesEl);
+        console.log(data);
+        page = data.page;
 
-    renderPagination(pagination, page, data.total_pages);
+        renderPagination(pagination, page, data.total_pages);
+    } else {
+        document.querySelector("main").remove();
+        errorEl.innerText = res.message;
+    }
 };
 
 prevEl.addEventListener("click", () => {

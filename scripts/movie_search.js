@@ -6,9 +6,9 @@ const search = document.querySelector(".search_field");
 const prevEl = document.querySelector(".prev");
 const nextEl = document.querySelector(".next");
 const moviesEl = document.querySelector(".movies");
-
 const pagination = document.querySelector(".page");
 const titleEl = document.querySelector(".title");
+const errorEl = document.querySelector(".error");
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -18,13 +18,24 @@ let searchText = urlParams.get("text") ?? "";
 search.value = searchText;
 titleEl.innerText = "Search Results - " + searchText;
 const loadMovies = async () => {
-    const data = await getMovieSearch(searchText, Number(page));
-    const movies = data.results;
-    renderList(movies, moviesEl);
-    console.log(data);
-    page = data.page;
+    const res = await getMovieSearch(searchText, Number(page));
+    if (res.error == false) {
+        const data = res.data;
+        const movies = data.results;
+        if (movies.length == 0) {
+            document.querySelector("main").remove();
+            errorEl.innerText = "No results found.";
+        } else {
+            renderList(movies, moviesEl);
+            console.log(data);
+            page = data.page;
 
-    renderPagination(pagination, page, data.total_pages);
+            renderPagination(pagination, page, data.total_pages);
+        }
+    } else {
+        document.querySelector("main").remove();
+        errorEl.innerText = res.message;
+    }
 };
 
 prevEl.addEventListener("click", () => {
