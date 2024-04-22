@@ -37,3 +37,15 @@
 .movie ul li > * {
     padding: 0.5rem;
 }
+
+.actor_list {
+    width: 100%;
+}
+
+.actor_list img {
+    width: 100px;
+}
+
+.actor_list td {
+    padding: 0.5rem;
+}
