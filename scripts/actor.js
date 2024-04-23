@@ -1,4 +1,4 @@
-import { getActor, getActorMovies } from "./reusable/movieAPI.js";
+import { getActor, getActorMovies, getActorTvs } from "./reusable/movieAPI.js";
 const errorEl = document.querySelector(".error");
 
 const actorTitleEl = document.querySelector(".actor_title");
@@ -46,7 +46,7 @@ const loadActor = async () => {
     //Load actor addons
 
     const res2 = await getActorMovies(Number(id));
-    if (res.error == false) {
+    if (res2.error == false) {
         const data = res2.data;
         data.cast.forEach((movie) => {
             const link = document.createElement("a");
@@ -57,7 +57,29 @@ const loadActor = async () => {
                     ? "https://media.themoviedb.org/t/p/w300_and_h450_bestv2" +
                       movie.backdrop_path
                     : "/images/unknown_movie.jpg"
-            }"/>`;
+            }"/><div class="pic-overlay"><p>Movie</p></div>`;
+
+            moviesEl.appendChild(link);
+        });
+        console.log(data);
+    } else {
+        document.querySelector("main").remove();
+        errorEl.innerText = res.message;
+    }
+
+    const res3 = await getActorTvs(Number(id));
+    if (res3.error == false) {
+        const data = res3.data;
+        data.cast.forEach((movie) => {
+            const link = document.createElement("a");
+            link.classList.add("movie");
+            link.href = "/movie.html?id=" + movie.id;
+            link.innerHTML = `<img alt="${movie.original_title}" src="${
+                movie?.backdrop_path
+                    ? "https://media.themoviedb.org/t/p/w300_and_h450_bestv2" +
+                      movie.backdrop_path
+                    : "/images/unknown_movie.jpg"
+            }"/><div class="pic-overlay"><p>TV</p></div>`;
 
             moviesEl.appendChild(link);
         });

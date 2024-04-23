@@ -48,7 +48,7 @@ const loadMovie = async () => {
     //Load movie addons
 
     const res2 = await getMovieCredits(Number(id));
-    if (res.error == false) {
+    if (res2.error == false) {
         const data = res2.data;
         data.cast.forEach((person) => {
             const tr = document.createElement("tr");

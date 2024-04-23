@@ -177,3 +177,20 @@ export const getActorMovies = async (id) => {
         return { error: true, message: err?.message };
     }
 };
+
+export const getActorTvs = async (id) => {
+    //Return actor movies
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/person/${id}/tv_credits`,
+            options
+        );
+        const json = await res.json();
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
+    } catch (err) {
+        return { error: true, message: err?.message };
+    }
+};
