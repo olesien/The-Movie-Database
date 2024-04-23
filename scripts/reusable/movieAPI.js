@@ -143,3 +143,37 @@ export const getActorSearch = async (searchText, page) => {
         return { error: true, message: err?.message };
     }
 };
+
+export const getActor = async (id) => {
+    //Return actor
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/person/${id}`,
+            options
+        );
+        const json = await res.json();
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
+    } catch (err) {
+        return { error: true, message: err?.message };
+    }
+};
+
+export const getActorMovies = async (id) => {
+    //Return actor movies
+    try {
+        const res = await fetch(
+            `https://api.themoviedb.org/3/person/${id}/movie_credits`,
+            options
+        );
+        const json = await res.json();
+        if (json?.success === false) {
+            return { error: true, message: json?.status_message };
+        }
+        return { error: false, data: json };
+    } catch (err) {
+        return { error: true, message: err?.message };
+    }
+};

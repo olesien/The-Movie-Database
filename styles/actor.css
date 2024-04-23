@@ -1,0 +1,63 @@
+.actor {
+    display: flex;
+}
+
+.actor > div {
+    flex: 1;
+    padding: 1rem;
+}
+
+.actor .left {
+    text-align: center;
+}
+
+.actor .actor_title {
+    padding-bottom: 1rem;
+}
+
+.actor .actor_description {
+    padding: 1rem;
+}
+
+.actor img {
+    width: 200px;
+    height: auto;
+}
+
+.actor ul {
+    list-style: none;
+}
+
+.actor ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.actor ul li > * {
+    padding: 0.5rem;
+}
+
+.actor_list {
+    width: 100%;
+}
+
+.actor_list img {
+    width: 100px;
+}
+
+.actor_list td {
+    padding: 0.5rem;
+}
+
+.movies {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.movie img {
+    width: 110px;
+    height: auto;
+}
