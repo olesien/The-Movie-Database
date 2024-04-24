@@ -37,7 +37,8 @@ const loadMovie = async () => {
         ratingEl.innerText = data?.vote_average + " / 10";
         revenueEl.innerText = "$" + formattedNumber(data?.revenue);
         genresEl.innerHTML = data.genres.map(
-            (genre) => ` <a href="/genre/${genre.id}">${genre.name}</a>`
+            (genre) =>
+                ` <a href="/genre.html?id=${genre.id}&name=${genre.name}">${genre.name}</a>`
         );
         console.log(data);
     } else {
