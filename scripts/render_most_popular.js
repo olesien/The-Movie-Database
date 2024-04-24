@@ -35,7 +35,7 @@ prevEl.addEventListener("click", () => {
         prevEl.classList.remove("clickable");
         if (page > 1) page--;
         urlParams.set("page", page);
-        window.location.search = searchParams.toString();
+        window.location.search = urlParams.toString();
         loadMovies();
         scroll(0, 0); //go to top
     }
@@ -47,7 +47,7 @@ nextEl.addEventListener("click", () => {
         page++;
         nextEl.classList.remove("clickable");
         urlParams.set("page", page);
-        window.location.search = searchParams.toString();
+        window.location.search = urlParams.toString();
         loadMovies();
         scroll(0, 0); //go to top
     }

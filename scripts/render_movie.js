@@ -1,5 +1,5 @@
-import { formattedNumber } from "./render_actor.js";
 import { getMovie, getMovieCredits } from "./reusable/movieAPI.js";
+import { formattedNumber } from "./reusable/usefulFuncs.js";
 
 //All elements
 const errorEl = document.querySelector(".error");
@@ -31,7 +31,10 @@ const loadMovie = async () => {
         releaseEl.innerText = data?.release_date ?? "Unknown";
         popularityEl.innerText = data?.popularity ?? 0;
         ratingEl.innerText = data?.vote_average + " / 10";
-        revenueEl.innerText = "$" + formattedNumber(data?.revenue);
+
+        revenueEl.innerText = data?.revenue
+            ? "$" + formattedNumber(data?.revenue)
+            : "Unknown";
         genresEl.innerHTML = data.genres.map(
             (genre) =>
                 ` <a href="/genre.html?id=${genre.id}&name=${genre.name}">${genre.name}</a>`
