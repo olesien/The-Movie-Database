@@ -33,11 +33,12 @@ export const getMoviesByGenre = async (page, id) => {
             options
         );
         const json = await res.json();
-        if (!json?.success) {
+        if (json?.success === false) {
             return { error: true, message: json?.status_message };
         }
         return { error: false, data: json };
     } catch (err) {
+        console.log(err);
         return { error: true, message: err?.message };
     }
 };

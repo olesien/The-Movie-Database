@@ -27,6 +27,7 @@ const loadMovies = async () => {
 
         renderPagination(pagination, page, data.total_pages);
     } else {
+        console.log(res);
         document.querySelector("main").remove();
         errorEl.innerText = res.message;
     }
