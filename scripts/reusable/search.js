@@ -5,6 +5,7 @@ const submitSearch = document.querySelector(".submit_search");
 
 let search = "";
 
+//Sets an event listener for when the search is submitted, which will cause the page to change and a forced location reload
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -21,6 +22,7 @@ searchForm.addEventListener("submit", (event) => {
     }
 });
 
+//This is to make it clear to the user when they can search (setting required on input would work as well)
 searchField.addEventListener("input", () => {
     search = searchField.value;
     if (search.length === 0) {

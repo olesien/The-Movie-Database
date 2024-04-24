@@ -1,6 +1,8 @@
 import { getGenres } from "./reusable/movieAPI.js";
 const genresEl = document.querySelector(".genres");
 const errorEl = document.querySelector(".error");
+
+//Renders the list of all the genres seen on start page
 const loadGenres = async () => {
     const res = await getGenres();
     if (res.error == false) {

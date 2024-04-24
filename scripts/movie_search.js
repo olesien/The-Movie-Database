@@ -1,6 +1,6 @@
-import { renderList } from "./reusable/movieList.js";
+import { renderMovieList } from "./reusable/renderList.js";
 import { getMovieSearch } from "./reusable/movieAPI.js";
-import { renderPagination } from "./reusable/pagination.js";
+import { renderPagination } from "./reusable/render_pagination.js";
 const search = document.querySelector(".search_field");
 
 const prevEl = document.querySelector(".prev");
@@ -17,6 +17,8 @@ let page = urlParams.get("page") ?? 1;
 let searchText = urlParams.get("text") ?? "";
 search.value = searchText;
 titleEl.innerText = "Search Results - " + searchText;
+
+//Load the movies seen on search page.
 const loadMovies = async () => {
     const res = await getMovieSearch(searchText, Number(page));
     if (res.error == false) {
@@ -26,7 +28,7 @@ const loadMovies = async () => {
             document.querySelector("main").remove();
             errorEl.innerText = "No results found.";
         } else {
-            renderList(movies, moviesEl, true);
+            renderMovieList(movies, moviesEl, true);
             console.log(data);
             page = data.page;
 
@@ -44,6 +46,7 @@ prevEl.addEventListener("click", () => {
         prevEl.classList.remove("clickable");
         if (page > 1) page--;
         urlParams.set("page", page);
+        window.location.search = searchParams.toString();
         loadMovies();
         scroll(0, 0); //go to top
     }
@@ -55,6 +58,7 @@ nextEl.addEventListener("click", () => {
         page++;
         nextEl.classList.remove("clickable");
         urlParams.set("page", page);
+        window.location.search = searchParams.toString();
         loadMovies();
         scroll(0, 0); //go to top
     }

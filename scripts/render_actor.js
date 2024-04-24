@@ -8,6 +8,8 @@ const birthplaceEl = document.querySelector(".birthplace");
 const popularityEl = document.querySelector(".popularity");
 const genderEl = document.querySelector(".gender");
 const moviesEl = document.querySelector(".movies");
+
+//Formats a number with commas etc.
 export const formattedNumber = (num, returnZero = false) => {
     if (!num || isNaN(num)) {
         if (returnZero) return 0;
@@ -19,6 +21,7 @@ export const formattedNumber = (num, returnZero = false) => {
 const urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id") ?? 1;
 
+//Render the actor and some misc information about them
 const loadActor = async () => {
     const res = await getActor(Number(id));
 

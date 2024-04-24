@@ -1,6 +1,8 @@
+import { formattedNumber } from "./render_actor.js";
 import { getMovie, getMovieCredits } from "./reusable/movieAPI.js";
-const errorEl = document.querySelector(".error");
 
+//All elements
+const errorEl = document.querySelector(".error");
 const movieTitleEl = document.querySelector(".movie_title");
 const movieImgEl = document.querySelector(".movie_img");
 const movieDescriptionEl = document.querySelector(".movie_description");
@@ -10,14 +12,8 @@ const ratingEl = document.querySelector(".rating");
 const revenueEl = document.querySelector(".revenue");
 const genresEl = document.querySelector(".genres");
 const actorListEl = document.querySelector(".actor_list");
-export const formattedNumber = (num, returnZero = false) => {
-    if (!num || isNaN(num)) {
-        if (returnZero) return 0;
-        return "";
-    }
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
 
+//URL for search params.
 const urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get("id") ?? 1;
 
@@ -46,9 +42,9 @@ const loadMovie = async () => {
         errorEl.innerText = res.message;
     }
 
-    //Load movie addons
-
+    //Load movie addons (movie credits)
     const res2 = await getMovieCredits(Number(id));
+    //It's a successful request
     if (res2.error == false) {
         const data = res2.data;
         data.cast.forEach((person) => {
@@ -75,6 +71,7 @@ const loadMovie = async () => {
         });
         console.log(data);
     } else {
+        //Error
         document.querySelector("main").remove();
         errorEl.innerText = res.message;
     }
