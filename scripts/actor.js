@@ -33,7 +33,7 @@ const loadActor = async () => {
         birthplaceEl.innerText = data?.place_of_birth ?? "Unknown";
         popularityEl.innerText = data?.popularity ?? 0;
         genderEl.innerText = data?.gender
-            ? data.gender === 1
+            ? data.gender === 2
                 ? "Male"
                 : "Female"
             : "Unknown";

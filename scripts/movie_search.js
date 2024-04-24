@@ -26,7 +26,7 @@ const loadMovies = async () => {
             document.querySelector("main").remove();
             errorEl.innerText = "No results found.";
         } else {
-            renderList(movies, moviesEl);
+            renderList(movies, moviesEl, true);
             console.log(data);
             page = data.page;
 

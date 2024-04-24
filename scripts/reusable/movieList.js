@@ -1,4 +1,4 @@
-export const renderList = (list, element) => {
+export const renderList = (list, element, includeDescription = false) => {
     element.innerHTML = "";
 
     list.forEach((data) => {
@@ -18,10 +18,23 @@ export const renderList = (list, element) => {
         const releaseEl = document.createElement("p");
         releaseEl.innerText =
             data?.release_date != "" ? data.release_date : "Unknown";
+        const rowContainer = document.createElement("div");
+        rowContainer.classList.add("row-container");
+        const topRow = document.createElement("div");
+        topRow.classList.add("top-row");
 
         movieDiv.appendChild(imgEl);
-        movieDiv.appendChild(titleEl);
-        movieDiv.appendChild(releaseEl);
+        topRow.appendChild(titleEl);
+        topRow.appendChild(releaseEl);
+        rowContainer.appendChild(topRow);
+        if (includeDescription) {
+            const descriptionEl = document.createElement("div");
+            descriptionEl.classList.add("bottom-row");
+            descriptionEl.innerText = data.overview;
+            rowContainer.appendChild(descriptionEl);
+        }
+
+        movieDiv.appendChild(rowContainer);
 
         element.appendChild(movieDiv);
     });

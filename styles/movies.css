@@ -12,6 +12,23 @@
     padding: 1rem;
 }
 
+.movies .row-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.movies .top-row {
+    justify-content: space-between;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.movies .bottom-row {
+    padding: 1rem;
+}
+
 .movies img {
     width: 100px;
     height: auto;

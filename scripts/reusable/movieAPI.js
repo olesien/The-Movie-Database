@@ -33,7 +33,7 @@ export const getMoviesByGenre = async (page, id) => {
             options
         );
         const json = await res.json();
-        if (json?.success === false) {
+        if (!json?.success) {
             return { error: true, message: json?.status_message };
         }
         return { error: false, data: json };
@@ -131,7 +131,7 @@ export const getActorSearch = async (searchText, page) => {
     //Return all actors that match
     try {
         const res = await fetch(
-            `https://api.themoviedb.org/3/search/person?query=${searchText}&language=en-US&page=${page}`,
+            `https://api.themoviedb.org/3/search/person?query=${searchText}%20&language=en-US&page=${page}`,
             options
         );
         const json = await res.json();
