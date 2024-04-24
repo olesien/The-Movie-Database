@@ -29,6 +29,6 @@
 }
 
 .page .next {
-    -webkit-mask: url("./icons/chevron-right-solid.svg") no-repeat center;
+    -webkit-mask: url("../icons/chevron-right-solid.svg") no-repeat center;
     mask: url("../icons/chevron-right-solid.svg") no-repeat center;
 }
