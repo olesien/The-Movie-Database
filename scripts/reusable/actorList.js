@@ -19,7 +19,7 @@ export const renderList = (list, element) => {
         department.innerText = data.known_for_department;
 
         const knownFor = document.createElement("p");
-        knownFor.style.maxWidth = "250px";
+        knownFor.style.width = "250px";
         knownFor.innerText = data.known_for
             .map(
                 (film) =>
