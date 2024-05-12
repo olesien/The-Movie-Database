@@ -37,7 +37,7 @@ const loadMovie = async () => {
             : "Unknown";
         genresEl.innerHTML = data.genres.map(
             (genre) =>
-                ` <a href="/genre.html?id=${genre.id}&name=${genre.name}">${genre.name}</a>`
+                ` <a href="./genre.html?id=${genre.id}&name=${genre.name}">${genre.name}</a>`
         );
         console.log(data);
     } else {

@@ -45,7 +45,7 @@ const loadActor = async () => {
         data.cast.forEach((movie) => {
             const link = document.createElement("a");
             link.classList.add("movie");
-            link.href = "/movie.html?id=" + movie.id;
+            link.href = "./movie.html?id=" + movie.id;
             link.innerHTML = `<img alt="${movie.original_title}" src="${
                 movie?.backdrop_path
                     ? "https://media.themoviedb.org/t/p/w300_and_h450_bestv2" +
