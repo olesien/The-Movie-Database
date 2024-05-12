@@ -14,7 +14,7 @@ export const renderMovieList = (list, element, includeDescription = false) => {
         const titleEl = document.createElement("h2");
         const linkEl = document.createElement("a");
         linkEl.innerText = data.original_title;
-        linkEl.href = "./movie.html?id=" + data.id;
+        linkEl.href = "../movie.html?id=" + data.id;
         titleEl.appendChild(linkEl);
 
         const releaseEl = document.createElement("p");
@@ -57,7 +57,7 @@ export const renderActorList = (list, element) => {
         const titleEl = document.createElement("h2");
         const linkEl = document.createElement("a");
         linkEl.innerText = data.original_name;
-        linkEl.href = "./actor.html?id=" + data.id;
+        linkEl.href = "../actor.html?id=" + data.id;
         titleEl.appendChild(linkEl);
 
         const department = document.createElement("p");
