@@ -16,7 +16,7 @@ searchForm.addEventListener("submit", (event) => {
         window.history.pushState(
             null,
             type,
-            `/search/${type}.html?text=${search}`
+            `./search/${type}.html?text=${search}`
         );
         location.reload();
     }

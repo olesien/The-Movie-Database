@@ -62,7 +62,7 @@ const loadMovie = async () => {
                     : "/images/unknown_person.jpg"
             }"/>`;
             const nameCell = document.createElement("td");
-            nameCell.innerHTML = `<a href="/actor.html?id=${person.id}">${person.name}</a>`;
+            nameCell.innerHTML = `<a href="./actor.html?id=${person.id}">${person.name}</a>`;
             const asCell = document.createElement("td");
             asCell.innerText = person?.known_for_department ?? "Unknown";
             const roleCell = document.createElement("td");
